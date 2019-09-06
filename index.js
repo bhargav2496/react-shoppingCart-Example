@@ -48,8 +48,13 @@ class App extends Component {
     this.state = {
       name: 'React',
       cart:{
-        
-      }
+        id: 4,
+        name: "Choco",
+        description: 'CCO (Chief Cat Officer)',
+        image: "https://tachyons.io/img/avatar_1.jpg",
+        price: 100,
+        units: 1
+        },
     };
   }
 
