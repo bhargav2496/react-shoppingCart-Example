@@ -85,17 +85,23 @@ class App extends Component {
 //using findIndex() method
 
 handleAddFunc(product){
-    const existingProduct = this.state.cart.filter(p => p.id === product.id);
+    const existingProductIndex = this.state.cart.findIndex(p => p.id === product.id);
 
-    if(existingProduct.length > 0){
-      const withoutExistingProduct = this.state.cart.filter(p => p.id !== product.id);
+    if(existingProductIndex >= 0){
+
+      const cartProducts = this.state.cart.slice();
+
+      const existingProduct = cartProducts[existingProductIndex];
+
       const updatedUnitsProduct = {
-        ...existingProduct[0],
-        units: existingProduct[0].units + product.units
+        ...existingProduct,
+        units: existingProduct.units + product.units
       };
 
+      cartProducts[existingProductIndex] = updatedUnitsProduct;
+
       this.setState({
-        cart: [...withoutExistingProduct, updatedUnitsProduct]
+        cart: cartProducts
       })
     } else {
       this.setState({
