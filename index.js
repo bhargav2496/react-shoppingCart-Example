@@ -60,6 +60,8 @@ class App extends Component {
     };
   }
 
+
+//using filter method
 handleAddFunc(product){
     const existingProduct = this.state.cart.filter(p => p.id === product.id);
 
