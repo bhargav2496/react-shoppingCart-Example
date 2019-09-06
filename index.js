@@ -47,7 +47,8 @@ class App extends Component {
     super();
     this.state = {
       name: 'React',
-      cart:{
+      cart:[
+      {
         id: 4,
         name: "Choco",
         description: 'CCO (Chief Cat Officer)',
@@ -55,12 +56,18 @@ class App extends Component {
         price: 100,
         units: 1
         },
+        ]
     };
   }
 
   render() {
     return (
       <main className="pa3 pa5-ns flex flex-wrap">
+      <ul>
+      {
+      this.state.cart.map(c => <li>{c.name} | units: {c.units}</li>  )
+      }
+      </ul>
       {
         products.map(p => <Product key={p.id}{...p}/>)
       }
