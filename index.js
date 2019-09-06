@@ -61,7 +61,29 @@ class App extends Component {
   }
 
 
-//using filter method
+//using filter() method
+// handleAddFunc(product){
+//     const existingProduct = this.state.cart.filter(p => p.id === product.id);
+
+//     if(existingProduct.length > 0){
+//       const withoutExistingProduct = this.state.cart.filter(p => p.id !== product.id);
+//       const updatedUnitsProduct = {
+//         ...existingProduct[0],
+//         units: existingProduct[0].units + product.units
+//       };
+
+//       this.setState({
+//         cart: [...withoutExistingProduct, updatedUnitsProduct]
+//       })
+//     } else {
+//       this.setState({
+//         cart: [...this.state.cart,product]
+//       })
+//     }
+//   }
+
+//using findIndex() method
+
 handleAddFunc(product){
     const existingProduct = this.state.cart.filter(p => p.id === product.id);
 
