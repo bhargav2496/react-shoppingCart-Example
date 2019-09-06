@@ -60,6 +60,28 @@ class App extends Component {
     };
   }
 
+handleAddFunc(product){
+    const existingProduct = this.state.cart.filter(p => p.id === product.id);
+
+    if(existingProduct.length > 0){
+      const withoutExistingProduct = this.state.cart.filter(p => p.id !== product.id);
+      const updatedUnitsProduct = {
+        ...existingProduct[0],
+        units: existingProduct[0].units + product.units
+      };
+
+      this.setState({
+        cart: [...withoutExistingProduct, updatedUnitsProduct]
+      })
+    } else {
+      this.setState({
+        cart: [...this.state.cart,product]
+      })
+    }
+  }
+
+
+
   render() {
     return (
       <main className="pa3 pa5-ns flex flex-wrap">
@@ -69,7 +91,7 @@ class App extends Component {
       }
       </ul>
       {
-        products.map(p => <Product key={p.id}{...p} addFunc={}/>)
+        products.map(p => <Product key={p.id}{...p} addFunc={this.handleAddFunc.bind(this)}/>)
       }
       </main>
     );
