@@ -69,7 +69,7 @@ class App extends Component {
       }
       </ul>
       {
-        products.map(p => <Product key={p.id}{...p}/>)
+        products.map(p => <Product key={p.id}{...p} addFunc={}/>)
       }
       </main>
     );
